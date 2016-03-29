@@ -61,6 +61,7 @@
     line: 'include {{ redis_custom_config }}'
     insertbefore: '{{ redis_save[0] }}'
     state: 'present'
+  when: redis_save is defined and redis_save
   notify: ['Restart Redis Server']
 
 - name: Insert templated values to the main Redis config
